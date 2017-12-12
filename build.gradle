@@ -1,0 +1,52 @@
+buildscript {
+    ext.kotlin_version = '1.2.0'
+
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+group 'com.github.janbols'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'kotlin2js'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version"
+//    compile 'org.jetbrains.kotlinx:kotlinx-html-js:0.6.8'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+
+compileKotlin2Js {
+//    kotlinOptions.outputFile = "${projectDir}/web/output.js"
+//    kotlinOptions.sourceMap = true
+}
+
+//
+//task assembleWeb(type: Sync) {
+//    configurations.compile.each { File file ->
+//        from(zipTree(file.absolutePath), {
+//            includeEmptyDirs = false
+//            include { fileTreeElement ->
+//                def path = fileTreeElement.path
+//                path.endsWith(".js") && (path.startsWith("META-INF/resources/") ||
+//                        !path.startsWith("META-INF/"))
+//            }
+//        })
+//    }
+//    from compileKotlin2Js.destinationDir
+//    into "${buildDir}/web"
+//
+//    dependsOn classes
+//}
