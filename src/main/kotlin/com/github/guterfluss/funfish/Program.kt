@@ -19,13 +19,19 @@ import kotlin.browser.document
 typealias Renderer = (Int, Int, List<Pair<Shape, Style>>) -> Unit
 
 fun simpleBox(width: Int, height: Int, renderer: Renderer) {
+//    val box = Box(
+//            Vector(0.0, 0.0),
+//            Vector(width.toDouble(), 0.0),
+//            Vector(0.0, height.toDouble())
+//    )
     val box = Box(
-            Vector(0.0, 0.0),
-            Vector(width.toDouble(), 0.0),
-            Vector(0.0, height.toDouble())
+            Vector(width / 4.0, height / 4.0),
+            Vector(width / 2.0, 0.0),
+            Vector(0.0, height / 2.0)
     )
 
-    val picture = beside(createPicture(Letter.f), createPicture(Letter.h))
+    val picture = corner(4,createPicture(Letter.h)
+    )
     box.pipe(picture).pipe { renderer(width, height, it) }
 }
 
@@ -79,7 +85,7 @@ fun hendersonSquareLimit(width: Int, height: Int, renderer: Renderer) {
             Vector(0.0, height.toDouble())
     )
 
-    box.pipe(squareLimit(4, fish)).pipe { renderer(width, height, it) }
+    box.pipe(squareLimit(2, fish)).pipe { renderer(width, height, it) }
 }
 
 fun hueFish(hue: Hue, width: Int, height: Int, renderer: Renderer) {
@@ -217,16 +223,16 @@ fun main(args: Array<String>) {
     }
 
 
-    simpleBox(400, 400, renderer)
-//    hendersonNonet(400, 400, renderer)
-//    hendersonTtile(400, 400, renderer)
-//    hendersonSquareLimit(400, 400, renderer)
-//    blackFish(400, 400, renderer)
-//    greyFish(400, 400, renderer)
-//    whiteFish(400, 400, renderer)
-//    hueSquareLimit(4, 400, 400, renderer)
+//    simpleBox(800, 800, renderer)
+//    hendersonNonet(800, 800, renderer)
+//    hendersonTtile(800, 800, renderer)
+//    hendersonSquareLimit(800, 800, renderer)
+    blackFish(800, 800, renderer)
+//    greyFish(800, 800, renderer)
+//    whiteFish(800, 800, renderer)
+//    hueSquareLimit(4, 800, 800, renderer)
 //    hueSquareLimit(5, 2000, 2000, renderer)
-//    singleLizard(400, 400, renderer)
+//    singleLizard(800, 800, renderer)
 //    quartetLizard(800, 800, renderer)
 //    hendersonEgg(3600, 800, renderer)
 //    fisheggfish(600, 600, renderer)

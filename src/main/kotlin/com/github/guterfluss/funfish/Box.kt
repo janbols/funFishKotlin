@@ -16,7 +16,7 @@ data class Box(val a: Vector, val b: Vector, val c: Vector) {
 
     fun splitHorizontally(f: Double): Pair<Box, Box> {
         val top = this.moveVertically(1.0-f).scaleVertically(f)
-        val bottom = this.scaleVertically(-f)
+        val bottom = this.scaleVertically(1.0-f)
         return Pair(top, bottom)
     }
 

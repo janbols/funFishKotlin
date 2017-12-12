@@ -187,6 +187,7 @@ fun render(width: Int, height: Int, context: CanvasRenderingContext2D, styledSha
             context.beginPath()
             context.moveTo(shape.point1.x, adjustHeight(shape.point1.y))
             context.bezierCurveTo(shape.point2.x, adjustHeight(shape.point2.y), shape.point3.x, adjustHeight(shape.point3.y), shape.point4.x, adjustHeight(shape.point4.y))
+            context.stroke()
         }
         is Path -> {
             applyStyle(style, context)
@@ -196,17 +197,20 @@ fun render(width: Int, height: Int, context: CanvasRenderingContext2D, styledSha
                     it.controlPoint2.x, adjustHeight(it.controlPoint2.y),
                     it.endPoint.x, adjustHeight(it.endPoint.y)) }
             context.closePath()
+            context.stroke()
         }
         is Line -> {
             applyStyle(style, context)
             context.beginPath()
             context.moveTo(shape.lineStart.x, adjustHeight(shape.lineStart.y))
             context.lineTo(shape.lineStart.x, adjustHeight(shape.lineStart.y))
+            context.stroke()
         }
         is Circle -> {
             applyStyle(style, context)
             context.beginPath()
             context.ellipse(shape.center.x, adjustHeight(shape.center.y), shape.radius.size(), shape.radius.size(), 0.0, 0.0, 0.0)
+            context.stroke()
         }
     }
     context.canvas.height = height

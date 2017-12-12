@@ -1,7 +1,5 @@
 package com.github.guterfluss.funfish
 
-import kotlin.math.min
-
 
 typealias LensPicture = (Lens) -> List<Pair<Shape, Style>>
 

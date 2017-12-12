@@ -28,7 +28,7 @@ fun side(n: Int, p: Picture): Picture {
 }
 
 fun corner(n: Int, p: Picture): Picture {
-    val (s, c) =
+    val (c,s) =
             if (n == 1) Pair(blank, blank)
             else Pair(corner(n - 1, p), side(n - 1, p))
     val u = utile(p)
@@ -37,7 +37,7 @@ fun corner(n: Int, p: Picture): Picture {
 
 fun nonet(p: Picture, q: Picture, r: Picture, s: Picture, t: Picture, u: Picture, v: Picture, w: Picture, x: Picture) =
         aboveRatio(1, 2, besideRatio(1, 2, p, (beside(q, r))),
-                aboveRatio(1, 2, besideRatio(1, 2, s, beside(t, u)),
+                aboveRatio(1, 1, besideRatio(1, 2, s, beside(t, u)),
                         besideRatio(1, 2, v, beside(w, x))))
 
 fun bandify(combineRatio: (Int, Int, Picture, Picture) -> Picture, n: Int, first: Picture, middle: Picture, last: Picture): Picture {
