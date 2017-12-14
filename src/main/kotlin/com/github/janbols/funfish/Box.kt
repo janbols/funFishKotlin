@@ -1,4 +1,4 @@
-package com.github.guterfluss.funfish
+package com.github.janbols.funfish
 
 data class Box(val a: Vector, val b: Vector, val c: Vector)
 
@@ -12,14 +12,14 @@ object Boxes {
     fun moveVertically(offset: Double, box: Box): Box = Box(box.a + box.c * offset, box.b, box.c)
 
     fun splitHorizontally(f: Double, box: Box): Pair<Box, Box> {
-        val top = box pipe (::moveVertically)(1.0 - f) pipe (::scaleVertically)(f)
-        val bottom = box pipe (::scaleVertically)(1.0 - f)
+        val top = box pipe (Boxes::moveVertically)(1.0 - f) pipe (Boxes::scaleVertically)(f)
+        val bottom = box pipe (Boxes::scaleVertically)(1.0 - f)
         return Pair(top, bottom)
     }
 
     fun splitVertically(f: Double, box: Box): Pair<Box, Box> {
-        val left = box pipe (::scaleHorizontally)(f)
-        val right = box pipe (::moveHorizontally)(f) pipe (::scaleHorizontally)(1.0 - f)
+        val left = box pipe (Boxes::scaleHorizontally)(f)
+        val right = box pipe (Boxes::moveHorizontally)(f) pipe (Boxes::scaleHorizontally)(1.0 - f)
         return Pair(left, right)
     }
 }

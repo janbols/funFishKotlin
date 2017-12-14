@@ -1,6 +1,6 @@
-package com.github.guterfluss.funfish.shapes
+package com.github.janbols.funfish.shapes
 
-import com.github.guterfluss.funfish.Vector
+import com.github.janbols.funfish.Vector
 
 
 object FishEgg {

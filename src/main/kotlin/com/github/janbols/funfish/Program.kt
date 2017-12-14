@@ -1,33 +1,32 @@
-package com.github.guterfluss.funfish
+package com.github.janbols.funfish
 
-import com.github.guterfluss.funfish.limited.Limited.corner
-import com.github.guterfluss.funfish.limited.Limited.egg
-import com.github.guterfluss.funfish.limited.Limited.nonet
-import com.github.guterfluss.funfish.limited.Limited.squareLimit
-import com.github.guterfluss.funfish.limited.Limited.ttile
-import com.github.guterfluss.funfish.limited.Style
-import com.github.guterfluss.funfish.shapes.FishEgg
-import com.github.guterfluss.funfish.shapes.Fishier.fishShapes
-import com.github.guterfluss.funfish.shapes.Fishy.hendersonFishShapes
-import com.github.guterfluss.funfish.shapes.Letter
-import com.github.guterfluss.funfish.shapes.Letter.d1
-import com.github.guterfluss.funfish.shapes.Letter.d2
-import com.github.guterfluss.funfish.shapes.Letter.e
-import com.github.guterfluss.funfish.shapes.Letter.h
-import com.github.guterfluss.funfish.shapes.Letter.n
-import com.github.guterfluss.funfish.shapes.Letter.o1
-import com.github.guterfluss.funfish.shapes.Letter.o2
-import com.github.guterfluss.funfish.shapes.Letter.r1
-import com.github.guterfluss.funfish.shapes.Letter.r2
-import com.github.guterfluss.funfish.shapes.Letter.s
-import com.github.guterfluss.funfish.shapes.Lizard
-import com.github.guterfluss.funfish.shapes.Shape
-import com.github.guterfluss.funfish.unlimited.Hue
-import com.github.guterfluss.funfish.unlimited.Lens
-import com.github.guterfluss.funfish.unlimited.LensPicture
-import com.github.guterfluss.funfish.unlimited.LensPictures.rehue
-import com.github.guterfluss.funfish.unlimited.LensPictures.turn
-import com.github.guterfluss.funfish.unlimited.Unlimited
+import com.github.janbols.funfish.limited.Limited.corner
+import com.github.janbols.funfish.limited.Limited.egg
+import com.github.janbols.funfish.limited.Limited.nonet
+import com.github.janbols.funfish.limited.Limited.squareLimit
+import com.github.janbols.funfish.limited.Limited.ttile
+import com.github.janbols.funfish.limited.Style
+import com.github.janbols.funfish.shapes.FishEgg
+import com.github.janbols.funfish.shapes.Fishier.fishShapes
+import com.github.janbols.funfish.shapes.Fishy.hendersonFishShapes
+import com.github.janbols.funfish.shapes.Letter.d1
+import com.github.janbols.funfish.shapes.Letter.d2
+import com.github.janbols.funfish.shapes.Letter.e
+import com.github.janbols.funfish.shapes.Letter.h
+import com.github.janbols.funfish.shapes.Letter.n
+import com.github.janbols.funfish.shapes.Letter.o1
+import com.github.janbols.funfish.shapes.Letter.o2
+import com.github.janbols.funfish.shapes.Letter.r1
+import com.github.janbols.funfish.shapes.Letter.r2
+import com.github.janbols.funfish.shapes.Letter.s
+import com.github.janbols.funfish.shapes.Lizard
+import com.github.janbols.funfish.shapes.Shape
+import com.github.janbols.funfish.unlimited.Hue
+import com.github.janbols.funfish.unlimited.Lens
+import com.github.janbols.funfish.unlimited.LensPicture
+import com.github.janbols.funfish.unlimited.LensPictures.rehue
+import com.github.janbols.funfish.unlimited.LensPictures.turn
+import com.github.janbols.funfish.unlimited.Unlimited
 import org.w3c.dom.CanvasRenderingContext2D
 import org.w3c.dom.HTMLCanvasElement
 import kotlin.browser.document
@@ -46,7 +45,7 @@ fun simpleBox(width: Int, height: Int, renderer: Renderer) {
             Vector(0.0, height / 2.0)
     )
 
-    val picture = corner(4,createPicture(Letter.h)
+    val picture = corner(4, createPicture(h)
     )
     box pipe picture pipe { renderer(width, height, it) }
 }

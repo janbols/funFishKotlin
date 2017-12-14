@@ -1,9 +1,9 @@
-package com.github.guterfluss.funfish.limited
+package com.github.janbols.funfish.limited
 
-import com.github.guterfluss.funfish.Box
-import com.github.guterfluss.funfish.Boxes
-import com.github.guterfluss.funfish.andThen
-import com.github.guterfluss.funfish.shapes.Shape
+import com.github.janbols.funfish.Box
+import com.github.janbols.funfish.Boxes
+import com.github.janbols.funfish.andThen
+import com.github.janbols.funfish.shapes.Shape
 
 
 typealias Picture = (Box) -> List<Pair<Shape, Style>>

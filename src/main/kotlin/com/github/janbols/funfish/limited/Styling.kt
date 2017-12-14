@@ -1,4 +1,4 @@
-package com.github.guterfluss.funfish.limited
+package com.github.janbols.funfish.limited
 
 enum class StyleColor { Black, Grey, White, Red, Green, Yellow }
 

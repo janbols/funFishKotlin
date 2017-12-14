@@ -1,4 +1,4 @@
-package com.github.guterfluss.funfish
+package com.github.janbols.funfish
 
 infix inline fun <P1, R> P1.pipe(t: (P1) -> R): R = t(this)
 

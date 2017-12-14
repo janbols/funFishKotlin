@@ -1,14 +1,14 @@
-package com.github.guterfluss.funfish.unlimited
+package com.github.janbols.funfish.unlimited
 
-import com.github.guterfluss.funfish.limited.Style
-import com.github.guterfluss.funfish.pipe
-import com.github.guterfluss.funfish.shapes.Shape
-import com.github.guterfluss.funfish.unlimited.Lenses.flip
-import com.github.guterfluss.funfish.unlimited.Lenses.rehue
-import com.github.guterfluss.funfish.unlimited.Lenses.splitHorizontally
-import com.github.guterfluss.funfish.unlimited.Lenses.splitVertically
-import com.github.guterfluss.funfish.unlimited.Lenses.toss
-import com.github.guterfluss.funfish.unlimited.Lenses.turn
+import com.github.janbols.funfish.limited.Style
+import com.github.janbols.funfish.pipe
+import com.github.janbols.funfish.shapes.Shape
+import com.github.janbols.funfish.unlimited.Lenses.flip
+import com.github.janbols.funfish.unlimited.Lenses.rehue
+import com.github.janbols.funfish.unlimited.Lenses.splitHorizontally
+import com.github.janbols.funfish.unlimited.Lenses.splitVertically
+import com.github.janbols.funfish.unlimited.Lenses.toss
+import com.github.janbols.funfish.unlimited.Lenses.turn
 
 
 typealias LensPicture = (Lens) -> List<Pair<Shape, Style>>

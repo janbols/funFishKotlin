@@ -1,16 +1,16 @@
-package com.github.guterfluss.funfish.unlimited
+package com.github.janbols.funfish.unlimited
 
-import com.github.guterfluss.funfish.invoke
-import com.github.guterfluss.funfish.pipe
-import com.github.guterfluss.funfish.unlimited.LensPictures.above
-import com.github.guterfluss.funfish.unlimited.LensPictures.aboveRatio
-import com.github.guterfluss.funfish.unlimited.LensPictures.beside
-import com.github.guterfluss.funfish.unlimited.LensPictures.besideRatio
-import com.github.guterfluss.funfish.unlimited.LensPictures.flip
-import com.github.guterfluss.funfish.unlimited.LensPictures.over
-import com.github.guterfluss.funfish.unlimited.LensPictures.rehue
-import com.github.guterfluss.funfish.unlimited.LensPictures.toss
-import com.github.guterfluss.funfish.unlimited.LensPictures.turn
+import com.github.janbols.funfish.invoke
+import com.github.janbols.funfish.pipe
+import com.github.janbols.funfish.unlimited.LensPictures.above
+import com.github.janbols.funfish.unlimited.LensPictures.aboveRatio
+import com.github.janbols.funfish.unlimited.LensPictures.beside
+import com.github.janbols.funfish.unlimited.LensPictures.besideRatio
+import com.github.janbols.funfish.unlimited.LensPictures.flip
+import com.github.janbols.funfish.unlimited.LensPictures.over
+import com.github.janbols.funfish.unlimited.LensPictures.rehue
+import com.github.janbols.funfish.unlimited.LensPictures.toss
+import com.github.janbols.funfish.unlimited.LensPictures.turn
 
 
 object Unlimited {
@@ -66,9 +66,9 @@ object Unlimited {
         return quartet(s, s, t pipe ::turn pipe hueSW, t pipe hueSE)
     }
 
-    val side0: (Int, LensPicture) -> LensPicture = (::side)(::ttile0)({ it })({ it })
-    val side1: (Int, LensPicture) -> LensPicture = (::side)(::ttile1)({ it })({ rehue(it) })
-    val side2: (Int, LensPicture) -> LensPicture = (::side)(::ttile2)({ rehue(it) pipe ::rehue })({ rehue(it) })
+    val side0: (Int, LensPicture) -> LensPicture = (Unlimited::side)(Unlimited::ttile0)({ it })({ it })
+    val side1: (Int, LensPicture) -> LensPicture = (Unlimited::side)(Unlimited::ttile1)({ it })({ rehue(it) })
+    val side2: (Int, LensPicture) -> LensPicture = (Unlimited::side)(Unlimited::ttile2)({ rehue(it) pipe ::rehue })({ rehue(it) })
 
 
     fun corner(ut: (LensPicture) -> LensPicture, sideNE: (Int, LensPicture) -> LensPicture, sideSW: (Int, LensPicture) -> LensPicture, n: Int, p: LensPicture): LensPicture {

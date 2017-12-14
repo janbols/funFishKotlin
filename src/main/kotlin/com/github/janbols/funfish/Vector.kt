@@ -1,4 +1,4 @@
-package com.github.guterfluss.funfish
+package com.github.janbols.funfish
 
 import kotlin.math.sqrt
 

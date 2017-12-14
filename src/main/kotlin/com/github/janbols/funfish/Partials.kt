@@ -1,4 +1,4 @@
-package com.github.guterfluss.funfish
+package com.github.janbols.funfish
 
 /**
  * Marker class to be used as the representation of a non-appliled parameter

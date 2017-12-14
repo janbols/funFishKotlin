@@ -1,11 +1,11 @@
-package com.github.guterfluss.funfish
+package com.github.janbols.funfish
 
-import com.github.guterfluss.funfish.limited.*
-import com.github.guterfluss.funfish.limited.StyleColor.*
-import com.github.guterfluss.funfish.shapes.*
-import com.github.guterfluss.funfish.unlimited.Hue
-import com.github.guterfluss.funfish.unlimited.Lens
-import com.github.guterfluss.funfish.unlimited.LensPicture
+import com.github.janbols.funfish.limited.*
+import com.github.janbols.funfish.limited.StyleColor.*
+import com.github.janbols.funfish.shapes.*
+import com.github.janbols.funfish.unlimited.Hue
+import com.github.janbols.funfish.unlimited.Lens
+import com.github.janbols.funfish.unlimited.LensPicture
 import org.w3c.dom.CanvasRenderingContext2D
 import kotlin.math.min
 

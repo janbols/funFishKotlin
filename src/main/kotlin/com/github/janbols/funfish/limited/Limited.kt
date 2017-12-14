@@ -1,15 +1,15 @@
-package com.github.guterfluss.funfish.limited
+package com.github.janbols.funfish.limited
 
-import com.github.guterfluss.funfish.invoke
-import com.github.guterfluss.funfish.limited.Pictures.above
-import com.github.guterfluss.funfish.limited.Pictures.aboveRatio
-import com.github.guterfluss.funfish.limited.Pictures.beside
-import com.github.guterfluss.funfish.limited.Pictures.besideRatio
-import com.github.guterfluss.funfish.limited.Pictures.flip
-import com.github.guterfluss.funfish.limited.Pictures.over
-import com.github.guterfluss.funfish.limited.Pictures.toss
-import com.github.guterfluss.funfish.limited.Pictures.turn
-import com.github.guterfluss.funfish.pipe
+import com.github.janbols.funfish.invoke
+import com.github.janbols.funfish.limited.Pictures.above
+import com.github.janbols.funfish.limited.Pictures.aboveRatio
+import com.github.janbols.funfish.limited.Pictures.beside
+import com.github.janbols.funfish.limited.Pictures.besideRatio
+import com.github.janbols.funfish.limited.Pictures.flip
+import com.github.janbols.funfish.limited.Pictures.over
+import com.github.janbols.funfish.limited.Pictures.toss
+import com.github.janbols.funfish.limited.Pictures.turn
+import com.github.janbols.funfish.pipe
 
 
 object Limited {
@@ -88,7 +88,7 @@ object Limited {
     fun eggband(n: Int, picture: Picture): Picture {
         val theSide = side(n, picture)
         val q = theSide
-        val t = picture pipe ::utile
+        val t = picture pipe Limited::utile
         val w = theSide pipe ::turn pipe ::turn
         return nonet(q, q, q, t, t, t, w, w, w)
     }

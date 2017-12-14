@@ -1,7 +1,7 @@
-package com.github.guterfluss.funfish.unlimited
+package com.github.janbols.funfish.unlimited
 
-import com.github.guterfluss.funfish.Box
-import com.github.guterfluss.funfish.Boxes
+import com.github.janbols.funfish.Box
+import com.github.janbols.funfish.Boxes
 
 enum class Hue { Blackish, Greyish, Whiteish, Hollow }
 
