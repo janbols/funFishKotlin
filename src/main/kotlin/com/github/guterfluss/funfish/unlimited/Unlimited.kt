@@ -58,7 +58,7 @@ object Unlimited {
 
     fun quartet(p: LensPicture, q: LensPicture, r: LensPicture, s: LensPicture): LensPicture = above(beside(p, q), beside(r, s))
 
-    val blank: LensPicture = { box -> listOf() }
+    val blank: LensPicture = { _ -> listOf() }
 
     fun side(tt: (LensPicture) -> LensPicture, hueSW: (LensPicture) -> LensPicture, hueSE: (LensPicture) -> LensPicture, n: Int, p: LensPicture): LensPicture {
         val s = if (n == 1) blank else side(tt, hueSW, hueSE, n - 1, p)

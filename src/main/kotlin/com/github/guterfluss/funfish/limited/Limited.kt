@@ -31,7 +31,7 @@ object Limited {
 
     fun quartet(p: Picture, q: Picture, r: Picture, s: Picture): Picture = above(beside(p, q), beside(r, s))
 
-    val blank: Picture = { box -> listOf() }
+    val blank: Picture = { _ -> listOf() }
 
 
     fun side(n: Int, p: Picture): Picture {
