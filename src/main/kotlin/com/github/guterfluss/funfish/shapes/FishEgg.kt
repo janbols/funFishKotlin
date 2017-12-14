@@ -1,9 +1,11 @@
-package com.github.guterfluss.funfish
+package com.github.guterfluss.funfish.shapes
+
+import com.github.guterfluss.funfish.Vector
 
 
-object Fishier {
+object FishEgg {
 
-    private val fishyBeziers = listOf(
+    private val eggfishyBeziers = listOf(
             Bezier(Vector(0.110, 0.110),
                     Vector(0.175, 0.175),
                     Vector(0.250, 0.250)
@@ -54,109 +56,114 @@ object Fishier {
             )
     )
 
-    private val fishyPath = Path(Vector(0.000, 0.000), fishyBeziers)
 
-    private val fishyLeftEyeBeziers = listOf(
-            Bezier(Vector(0.040, 0.772),
-                    Vector(0.068, 0.696),
-                    Vector(0.074, 0.685)
+    private val eggfishyPath = Path(Vector(0.000, 0.000), eggfishyBeziers)
+
+    private val eggfishyLeftEyeBeziers = listOf(
+            //right
+            Bezier(Vector(0.040, 0.750),
+                    Vector(0.055, 0.710),
+                    Vector(0.065, 0.675)
             ),
-
-            Bezier(Vector(0.045, 0.660),
-                    Vector(0.010, 0.617),
-                    Vector(-0.008, 0.592)
+            //bottom
+            Bezier(Vector(0.040, 0.655),
+                    Vector(0.020, 0.630),
+                    Vector(0.000, 0.610)
             ),
+            //left
+            Bezier(Vector(-0.010, 0.660),
+                    Vector(-0.008, 0.720),
+                    Vector(0.010, 0.775)
+            ))
 
-            Bezier(Vector(-0.017, 0.685),
-                    Vector(-0.012, 0.770),
-                    Vector(0.004, 0.800)
-            )
-    )
+    private val eggleftEyePath = Path(Vector(0.010, 0.775), eggfishyLeftEyeBeziers)
 
-    private val leftEyePath = Path(Vector(0.004, 0.800), fishyLeftEyeBeziers)
-
-    private val fishyInnerLeftEyeBeziers = listOf(
-            Bezier(Vector(0.038, 0.708),
-                    Vector(0.053, 0.684),
-                    Vector(0.057, 0.674)
+    private val eggfishyInnerLeftEyeBeziers = listOf(
+            //right
+            Bezier(Vector(0.034, 0.682),
+                    Vector(0.040, 0.670),
+                    Vector(0.044, 0.660)
             ),
-
-            Bezier(Vector(0.035, 0.652),
-                    Vector(0.010, 0.622),
-                    Vector(0.008, 0.618)
+            //bottom
+            Bezier(Vector(0.037, 0.650),
+                    Vector(0.030, 0.643),
+                    Vector(0.025, 0.638)
             ),
+            //left
+            Bezier(Vector(0.021, 0.650),
+                    Vector(0.021, 0.675),
+                    Vector(0.025, 0.690)
+            ))
 
-            Bezier(Vector(0.005, 0.685),
-                    Vector(0.010, 0.700),
-                    Vector(0.018, 0.720)
-            )
-    )
+    private val egginnerLeftEyePath = Path(Vector(0.025, 0.690), eggfishyInnerLeftEyeBeziers)
 
-    private val innerLeftEyePath = Path(Vector(0.018, 0.720), fishyInnerLeftEyeBeziers)
-
-    private val fishyRightEyeBeziers = listOf(
-            Bezier(Vector(0.160, 0.840),
-                    Vector(0.200, 0.790),
-                    Vector(0.205, 0.782)
+    private val eggfishyRightEyeBeziers = listOf(
+            //right
+            Bezier(Vector(0.145, 0.845),
+                    Vector(0.175, 0.810),
+                    Vector(0.195, 0.782)
             ),
-
+            //bottom
             Bezier(Vector(0.165, 0.760),
                     Vector(0.140, 0.740),
-                    Vector(0.115, 0.715)
+                    Vector(0.122, 0.720)
             ),
+            //left
+            Bezier(Vector(0.108, 0.760),
+                    Vector(0.100, 0.820),
+                    Vector(0.105, 0.860)
+            ))
 
-            Bezier(Vector(0.095, 0.775),
-                    Vector(0.090, 0.830),
-                    Vector(0.095, 0.870)
-            )
-    )
+    private val eggrightEyePath = Path(Vector(0.105, 0.860), eggfishyRightEyeBeziers)
 
-    private val rightEyePath = Path(Vector(0.095, 0.870), fishyRightEyeBeziers)
-
-    private val fishyInnerRightEyeBeziers = listOf(
-            Bezier(Vector(0.150, 0.805),
-                    Vector(0.174, 0.783),
-                    Vector(0.185, 0.774)
+    private val eggfishyInnerRightEyeBeziers = listOf(
+            //right
+            Bezier(Vector(0.155, 0.780),
+                    Vector(0.162, 0.770),
+                    Vector(0.168, 0.763)
             ),
-
-            Bezier(Vector(0.154, 0.756),
-                    Vector(0.139, 0.740),
-                    Vector(0.132, 0.736)
+//bottom
+            Bezier(Vector(0.159, 0.758),
+                    Vector(0.149, 0.750),
+                    Vector(0.145, 0.747)
             ),
+//left
+            Bezier(Vector(0.142, 0.760),
+                    Vector(0.140, 0.776),
+                    Vector(0.141, 0.787)
+            ))
 
-            Bezier(Vector(0.126, 0.760),
-                    Vector(0.122, 0.795),
-                    Vector(0.128, 0.810)
-            )
-    )
+    private val egginnerRightEyePath = Path(Vector(0.141, 0.787), eggfishyInnerRightEyeBeziers)
 
-    private val innerRightEyePath = Path(Vector(0.128, 0.810), fishyInnerRightEyeBeziers)
-
-    private val fishySpineCurves = listOf(
+    private val mainSpineCurves = listOf(
             //main spine
             Curve(Vector(0.840, 0.070),
                     Vector(0.350, 0.120),
                     Vector(0.140, 0.500),
                     Vector(0.025, 0.900)
-            ),
+            ))
+
+    private val finStemCurves = listOf(
             //left fin stem
             Curve(Vector(-0.015, 0.520),
                     Vector(0.040, 0.400),
                     Vector(0.120, 0.300),
                     Vector(0.210, 0.260)
             ),
-            //right fin stem
+//right fin stem
             Curve(Vector(0.475, 0.270),
                     Vector(0.320, 0.350),
                     Vector(0.340, 0.600),
                     Vector(0.240, 0.770)
             ),
-            //right fin bottom delimiter
+//right fin bottom delimiter
             Curve(Vector(0.377, 0.377),
                     Vector(0.410, 0.410),
                     Vector(0.460, 0.460),
                     Vector(0.495, 0.495)
-            ),
+            ))
+
+    private val tailFinCurves = listOf(
             //tail fin stem
             Curve(Vector(0.430, 0.165),
                     Vector(0.480, 0.175),
@@ -169,58 +176,67 @@ object Fishier {
                     Vector(0.540, 0.110),
                     Vector(0.600, 0.080)
             ),
-            //tail fin top line
+//tail fin top line
             Curve(Vector(0.482, 0.215),
                     Vector(0.520, 0.200),
                     Vector(0.600, 0.160),
                     Vector(0.740, 0.150)
-            ),
+            ))
+
+    private val finDetailCurves = listOf(
             //left fin top line
             Curve(Vector(-0.170, 0.237),
                     Vector(-0.125, 0.355),
                     Vector(-0.065, 0.405),
                     Vector(0.010, 0.480)
             ),
-            //left fin middle line
+//left fin middle line
             Curve(Vector(-0.110, 0.175),
                     Vector(-0.060, 0.250),
                     Vector(-0.030, 0.300),
                     Vector(0.080, 0.365)
             ),
-            //left fin bottom line
+//left fin bottom line
             Curve(Vector(-0.045, 0.115),
                     Vector(0.010, 0.180),
                     Vector(0.060, 0.230),
                     Vector(0.170, 0.280)
             ),
-            //right fin top line
+//right fin top line
             Curve(Vector(0.270, 0.700),
                     Vector(0.340, 0.720),
                     Vector(0.426, 0.710),
                     Vector(0.474, 0.692)
             ),
-            //right fin middle line
+//right fin middle line
             Curve(Vector(0.310, 0.570),
                     Vector(0.400, 0.622),
                     Vector(0.435, 0.618),
                     Vector(0.474, 0.615)
             ),
-            //right fin bottom line
+//right fin bottom line
             Curve(Vector(0.350, 0.435),
                     Vector(0.400, 0.505),
                     Vector(0.422, 0.520),
                     Vector(0.474, 0.538)
-            )
-    )
+            ))
 
-    private val fishyLines = fishySpineCurves.map { Pair("secondary", it) }
+    private fun namedCurves(name: String, curves: List<Curve>): List<Pair<String, Curve>> = curves.map { c -> Pair(name, c) }
 
-    val fishShapes = listOf(
-            Pair("primary", fishyPath),
-            Pair("eye-outer", leftEyePath),
-            Pair("eye-outer", rightEyePath),
-            Pair("eye-inner", innerLeftEyePath),
-            Pair("eye-inner", innerRightEyePath)
-    ) + fishyLines
+    val mainSpine = namedCurves("main-spine", mainSpineCurves)
+    val tailFin = namedCurves("tail-fin", tailFinCurves)
+    val finStem = namedCurves("fin-stem", finStemCurves)
+    val finDetails = namedCurves("fin-details", finDetailCurves)
 
+    val fisheggShapes: List<Pair<String, Shape>> = listOf(
+            Pair("primary", eggfishyPath)
+            , Pair("egg-eye-outer", eggleftEyePath)
+            , Pair("egg-eye-outer", eggrightEyePath)
+            , Pair("egg-eye-inner", egginnerLeftEyePath)
+            , Pair("egg-eye-inner", egginnerRightEyePath)
+    ) +
+            mainSpine +
+            tailFin +
+            finStem +
+            finDetails
 }

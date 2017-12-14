@@ -1,17 +1,33 @@
 package com.github.guterfluss.funfish
 
-import com.github.guterfluss.funfish.Fishier.fishShapes
-import com.github.guterfluss.funfish.Fishy.hendersonFishShapes
-import com.github.guterfluss.funfish.Letter.d1
-import com.github.guterfluss.funfish.Letter.d2
-import com.github.guterfluss.funfish.Letter.e
-import com.github.guterfluss.funfish.Letter.h
-import com.github.guterfluss.funfish.Letter.n
-import com.github.guterfluss.funfish.Letter.o1
-import com.github.guterfluss.funfish.Letter.o2
-import com.github.guterfluss.funfish.Letter.r1
-import com.github.guterfluss.funfish.Letter.r2
-import com.github.guterfluss.funfish.Letter.s
+import com.github.guterfluss.funfish.limited.Limited.corner
+import com.github.guterfluss.funfish.limited.Limited.egg
+import com.github.guterfluss.funfish.limited.Limited.nonet
+import com.github.guterfluss.funfish.limited.Limited.squareLimit
+import com.github.guterfluss.funfish.limited.Limited.ttile
+import com.github.guterfluss.funfish.limited.Style
+import com.github.guterfluss.funfish.shapes.FishEgg
+import com.github.guterfluss.funfish.shapes.Fishier.fishShapes
+import com.github.guterfluss.funfish.shapes.Fishy.hendersonFishShapes
+import com.github.guterfluss.funfish.shapes.Letter
+import com.github.guterfluss.funfish.shapes.Letter.d1
+import com.github.guterfluss.funfish.shapes.Letter.d2
+import com.github.guterfluss.funfish.shapes.Letter.e
+import com.github.guterfluss.funfish.shapes.Letter.h
+import com.github.guterfluss.funfish.shapes.Letter.n
+import com.github.guterfluss.funfish.shapes.Letter.o1
+import com.github.guterfluss.funfish.shapes.Letter.o2
+import com.github.guterfluss.funfish.shapes.Letter.r1
+import com.github.guterfluss.funfish.shapes.Letter.r2
+import com.github.guterfluss.funfish.shapes.Letter.s
+import com.github.guterfluss.funfish.shapes.Lizard
+import com.github.guterfluss.funfish.shapes.Shape
+import com.github.guterfluss.funfish.unlimited.Hue
+import com.github.guterfluss.funfish.unlimited.Lens
+import com.github.guterfluss.funfish.unlimited.LensPicture
+import com.github.guterfluss.funfish.unlimited.LensPictures.rehue
+import com.github.guterfluss.funfish.unlimited.LensPictures.turn
+import com.github.guterfluss.funfish.unlimited.Unlimited
 import org.w3c.dom.CanvasRenderingContext2D
 import org.w3c.dom.HTMLCanvasElement
 import kotlin.browser.document
@@ -32,7 +48,7 @@ fun simpleBox(width: Int, height: Int, renderer: Renderer) {
 
     val picture = corner(4,createPicture(Letter.h)
     )
-    box.pipe(picture).pipe { renderer(width, height, it) }
+    box pipe picture pipe { renderer(width, height, it) }
 }
 
 fun hendersonNonet(width: Int, height: Int, renderer: Renderer) {
@@ -49,7 +65,7 @@ fun hendersonNonet(width: Int, height: Int, renderer: Renderer) {
             Vector(0.0, height.toDouble())
     )
 
-    box.pipe(nonet(h, e, n, d, e, r, s, o, n)).pipe { renderer(width, height, it) }
+    box pipe nonet(h, e, n, d, e, r, s, o, n) pipe { renderer(width, height, it) }
 
 }
 
@@ -61,7 +77,7 @@ fun hendersonTtile(width: Int, height: Int, renderer: Renderer) {
             Vector(0.0, height / 2.0)
     )
 
-    box.pipe(ttile(fish)).pipe { renderer(width, height, it) }
+    box pipe ttile(fish) pipe { renderer(width, height, it) }
 }
 
 fun hendersonEgg(width: Int, height: Int, renderer: Renderer) {
@@ -73,7 +89,7 @@ fun hendersonEgg(width: Int, height: Int, renderer: Renderer) {
     )
     val depth = 3
     val band = egg(depth, 16, fish)
-    box.pipe(band).pipe { renderer(width, height, it) }
+    box pipe band pipe { renderer(width, height, it) }
 }
 
 
@@ -85,7 +101,7 @@ fun hendersonSquareLimit(width: Int, height: Int, renderer: Renderer) {
             Vector(0.0, height.toDouble())
     )
 
-    box.pipe(squareLimit(2, fish)).pipe { renderer(width, height, it) }
+    box pipe squareLimit(2, fish) pipe { renderer(width, height, it) }
 }
 
 fun hueFish(hue: Hue, width: Int, height: Int, renderer: Renderer) {
@@ -97,7 +113,7 @@ fun hueFish(hue: Hue, width: Int, height: Int, renderer: Renderer) {
     )
 
     val lens = Lens(box, hue)
-    lens.pipe(fish).pipe { renderer(width, height, it) }
+    lens pipe fish pipe { renderer(width, height, it) }
 }
 
 val blackFish = (::hueFish)(Hue.Blackish)
@@ -113,7 +129,7 @@ fun hueSquareLimit(n: Int, width: Int, height: Int, renderer: Renderer) {
     )
 
     val lens = Lens(box, Hue.Greyish)
-    lens.pipe(Unlimited.squareLimit(n, fish)).pipe { renderer(width, height, it) }
+    lens pipe Unlimited.squareLimit(n, fish) pipe { renderer(width, height, it) }
 }
 
 fun singleLizard(width: Int, height: Int, renderer: Renderer) {
@@ -124,7 +140,7 @@ fun singleLizard(width: Int, height: Int, renderer: Renderer) {
             Vector(0.0, height / 2.0)
     )
     val lens = Lens(box, Hue.Greyish)
-    lens.pipe(lizard).pipe { renderer(width, height, it) }
+    lens pipe lizard pipe { renderer(width, height, it) }
 }
 
 fun qquartet(n: Int, p: LensPicture): LensPicture {
@@ -134,7 +150,7 @@ fun qquartet(n: Int, p: LensPicture): LensPicture {
 
 fun quartetLizard(width: Int, height: Int, renderer: Renderer) {
     val lizard1 = createLensPicture(Lizard.lizardShapes)
-    val lizard2 = lizard1.pipe(::rehue)
+    val lizard2 = lizard1 pipe ::rehue
     val box = Box(
             Vector(width / 4.0, height / 4.0),
             Vector(width / 2.0, 0.0),
@@ -142,12 +158,12 @@ fun quartetLizard(width: Int, height: Int, renderer: Renderer) {
     )
     val lens = Lens(box, Hue.Blackish)
     val lizardNW = lizard1
-    val lizardNE = lizard2.pipe(::turn)
-    val lizardSW = lizard2.pipe(::turn).pipe(::turn).pipe(::turn)
-    val lizardSE = lizard1.pipe(::turn).pipe(::turn)
+    val lizardNE = lizard2 pipe ::turn
+    val lizardSW = lizard2 pipe ::turn pipe ::turn pipe ::turn
+    val lizardSE = lizard1 pipe ::turn pipe ::turn
     val q = Unlimited.quartet(lizardNW, lizardNE, lizardSW, lizardSE)
     val qq = qquartet(3, q)
-    lens.pipe(qq).pipe { renderer(width, height, it) }
+    lens pipe qq pipe { renderer(width, height, it) }
 }
 
 fun escherEgg(depth: Int, width: Int, height: Int, renderer: Renderer) {
@@ -160,7 +176,7 @@ fun escherEgg(depth: Int, width: Int, height: Int, renderer: Renderer) {
 
     val band = Unlimited.egg(depth, 18, fish)
     val lens = Lens(box, Hue.Hollow)
-    lens.pipe(band).pipe { renderer(width, height, it) }
+    lens pipe band pipe { renderer(width, height, it) }
 }
 
 fun escherEgg2(depth: Int, width: Int, height: Int, renderer: Renderer) {
@@ -173,7 +189,7 @@ fun escherEgg2(depth: Int, width: Int, height: Int, renderer: Renderer) {
 
     val band = Unlimited.egg(depth, 12, fish)
     val lens = Lens(box, Hue.Hollow)
-    lens.pipe(band).pipe { renderer(width, height, it) }
+    lens pipe band pipe { renderer(width, height, it) }
 }
 
 fun escherEggStretch(depth: Int, width: Int, height: Int, renderer: Renderer) {
@@ -186,19 +202,19 @@ fun escherEggStretch(depth: Int, width: Int, height: Int, renderer: Renderer) {
 
     val band = Unlimited.egg(depth, 10, fish)
     val lens = Lens(box, Hue.Hollow)
-    lens.pipe(band).pipe { renderer(width, height, it) }
+    lens pipe band pipe { renderer(width, height, it) }
 }
 
 fun fisheggfish(width: Int, height: Int, renderer: Renderer) {
     val fish = createLensPicture(FishEgg.fisheggShapes)
     val box = Box(
             Vector(100.0, 100.0),
-            Vector(3400.0, 0.0),
+            Vector(400.0, 0.0),
             Vector(0.0, 400.0)
     )
 
     val lens = Lens(box, Hue.Hollow)
-    lens.pipe(fish).pipe { renderer(width, height, it) }
+    lens pipe fish pipe { renderer(width, height, it) }
 }
 
 fun fishegg(depth: Int, width: Int, height: Int, renderer: Renderer) {
@@ -211,7 +227,7 @@ fun fishegg(depth: Int, width: Int, height: Int, renderer: Renderer) {
 
     val band = Unlimited.egg(depth, 10, fish)
     val lens = Lens(box, Hue.Hollow)
-    lens.pipe(band).pipe { renderer(width, height, it) }
+    lens pipe band pipe { renderer(width, height, it) }
 }
 
 
@@ -227,14 +243,15 @@ fun main(args: Array<String>) {
 //    hendersonNonet(800, 800, renderer)
 //    hendersonTtile(800, 800, renderer)
 //    hendersonSquareLimit(800, 800, renderer)
-    blackFish(800, 800, renderer)
+//    blackFish(800, 800, renderer)
 //    greyFish(800, 800, renderer)
 //    whiteFish(800, 800, renderer)
 //    hueSquareLimit(4, 800, 800, renderer)
-//    hueSquareLimit(5, 2000, 2000, renderer)
+    hueSquareLimit(5, 2000, 2000, renderer)
 //    singleLizard(800, 800, renderer)
 //    quartetLizard(800, 800, renderer)
 //    hendersonEgg(3600, 800, renderer)
+//    escherEggStretch(4, 3600, 800, renderer)
 //    fisheggfish(600, 600, renderer)
 //    fishegg(3, 3200, 920, renderer)
 //    fishegg(2, 3200, 920, renderer)

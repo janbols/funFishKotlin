@@ -1,4 +1,6 @@
-package com.github.guterfluss.funfish
+package com.github.guterfluss.funfish.shapes
+
+import com.github.guterfluss.funfish.Vector
 
 
 object Letter {

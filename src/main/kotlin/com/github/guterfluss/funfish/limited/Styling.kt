@@ -1,6 +1,6 @@
-package com.github.guterfluss.funfish
+package com.github.guterfluss.funfish.limited
 
-enum class StyleColor { Black, Grey, White, Red, Green }
+enum class StyleColor { Black, Grey, White, Red, Green, Yellow }
 
 data class StrokeStyle(val strokeWidth: Double, val strokeColor: StyleColor)
 
