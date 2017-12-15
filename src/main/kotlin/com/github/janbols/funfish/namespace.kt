@@ -23,3 +23,8 @@ operator @Suppress("UNUSED_PARAMETER") fun <P1, P2, P3, P4, R> ((P1, P2, P3, P4)
 operator @Suppress("UNUSED_PARAMETER") fun <P1, P2, P3, P4, P5, R> ((P1, P2, P3, P4, P5) -> R).invoke(p1: P1, partial2: Partial<P2> = partial(), partial3: Partial<P3> = partial(), partial4: Partial<P4> = partial(), partial5: Partial<P5> = partial()): (P2, P3, P4, P5) -> R {
     return { p2: P2, p3: P3, p4: P4, p5: P5 -> this(p1, p2, p3, p4, p5) }
 }
+
+
+class Partial<T>
+
+fun <T> partial(): Partial<T> = Partial()
