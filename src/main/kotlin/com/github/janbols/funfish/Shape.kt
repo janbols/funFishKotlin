@@ -1,6 +1,4 @@
-package com.github.janbols.funfish.shapes
-
-import com.github.janbols.funfish.Vector
+package com.github.janbols.funfish
 
 sealed class Shape
 

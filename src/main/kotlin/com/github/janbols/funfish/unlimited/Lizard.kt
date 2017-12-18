@@ -1,6 +1,6 @@
-package com.github.janbols.funfish.shapes
+package com.github.janbols.funfish.unlimited
 
-import com.github.janbols.funfish.Vector
+import com.github.janbols.funfish.*
 
 
 object Lizard {

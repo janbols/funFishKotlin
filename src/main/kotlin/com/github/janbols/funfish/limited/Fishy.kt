@@ -1,5 +1,6 @@
-package com.github.janbols.funfish.shapes
+package com.github.janbols.funfish.limited
 
+import com.github.janbols.funfish.Curve
 import com.github.janbols.funfish.Vector
 
 
