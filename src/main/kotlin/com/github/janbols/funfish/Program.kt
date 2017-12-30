@@ -58,7 +58,6 @@ private val pages: Map<Int, (Renderer) -> Unit> = listOf(
         draw(::expandedBox, Hue.Whiteish, createLensPicture(fishShapes)),
         draw(::expandedBox, Hue.Greyish, createLensPicture(lizardShapes)),
         draw(::fittedBox, Hue.Blackish, Unlimited.quartet2(3, createLensPicture(lizardShapes))),
-        draw(::fittedBox, Hue.Brownish, Unlimited.quartet2(3, createLensPicture(lizardShapes))),
         draw(::bandBox, Hue.Hollow, Unlimited.egg(3, 16, createLensPicture(fishShapes)), 1200, 800),
         draw(::fittedBox, Hue.Greyish, Unlimited.squareLimit(3, createLensPicture(fishShapes))),
         draw(::fittedBox, Hue.Brownish, Unlimited.squareLimit(3, createLensPicture(fishShapes)))
@@ -95,7 +94,7 @@ fun main(args: Array<String>) {
 
     val page = getPage(window.location.search)
     if (page > 1) setPage(document.getElementById("prev") as HTMLDivElement, page - 1)
-    setPage(document.getElementById("next") as HTMLDivElement, page + 1)
+    if (page < pages.size ) setPage(document.getElementById("next") as HTMLDivElement, page + 1)
     setTitle("page $page")
 
     val canvas = document.getElementById("myCanvas") as HTMLCanvasElement
@@ -103,14 +102,14 @@ fun main(args: Array<String>) {
     val renderer: Renderer = { width, height, styledShapes ->
         render(width, height, context, styledShapes)
     }
-    pages[page]?.invoke(renderer)
+    pages[page-1]?.invoke(renderer)
 }
 
 
 private fun getPage(search: String): Int {
     val baseIx = search.indexOf("page=")
     val offset = "page=".length
-    return if (baseIx < 0) 0 else search.drop(baseIx + offset).takeWhile { it in '0'..'9' }.toInt()
+    return if (baseIx < 0) 1 else search.drop(baseIx + offset).takeWhile { it in '0'..'9' }.toInt()
 }
 
 private fun setPage(div: HTMLDivElement, pageNr: Int) {
