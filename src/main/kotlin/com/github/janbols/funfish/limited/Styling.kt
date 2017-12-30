@@ -1,6 +1,6 @@
 package com.github.janbols.funfish.limited
 
-enum class StyleColor { Black, Grey, White, Red, Green, Yellow }
+enum class StyleColor { Black, Grey, White, Red, Brown, Beige, Green, Yellow }
 
 data class StrokeStyle(val strokeWidth: Double, val strokeColor: StyleColor)
 

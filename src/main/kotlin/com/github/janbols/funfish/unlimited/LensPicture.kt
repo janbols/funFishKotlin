@@ -56,6 +56,11 @@ fun getDefaultColor(name: String, hue: Hue): StyleColor =
                 Hue.Blackish -> StyleColor.White
                 Hue.Greyish -> StyleColor.White
                 Hue.Whiteish -> StyleColor.Black
+
+                Hue.Redish-> StyleColor.Beige
+                Hue.Brownish-> StyleColor.Beige
+                Hue.Beige-> StyleColor.Red
+
                 Hue.Hollow -> StyleColor.Black
             }
         } else {
@@ -63,6 +68,11 @@ fun getDefaultColor(name: String, hue: Hue): StyleColor =
                 Hue.Blackish -> StyleColor.Black
                 Hue.Greyish -> StyleColor.Grey
                 Hue.Whiteish -> StyleColor.White
+
+                Hue.Redish-> StyleColor.Red
+                Hue.Brownish-> StyleColor.Brown
+                Hue.Beige-> StyleColor.Beige
+
                 Hue.Hollow -> StyleColor.White
             }
         }
@@ -95,6 +105,26 @@ fun getFillPathColor(name: String, hue: Hue): StyleColor = when (hue) {
         isInnerEye(name) -> StyleColor.Black
         else -> StyleColor.Black
     }
+
+    Hue.Redish-> when {
+        name == "primary" -> StyleColor.Red
+        isOuterEye(name) -> StyleColor.Beige
+        isInnerEye(name) -> StyleColor.Red
+        else -> StyleColor.Beige
+    }
+    Hue.Brownish-> when {
+        name == "primary" -> StyleColor.Brown
+        isOuterEye(name) -> StyleColor.Beige
+        isInnerEye(name) -> StyleColor.Brown
+        else -> StyleColor.Beige
+    }
+    Hue.Beige -> when {
+        name == "primary" -> StyleColor.Beige
+        isOuterEye(name) -> StyleColor.Beige
+        isInnerEye(name) -> StyleColor.Red
+        else -> StyleColor.Red
+    }
+
     Hue.Hollow -> when {
         name == "primary" -> StyleColor.White
         isOuterEye(name) -> StyleColor.White

@@ -3,11 +3,11 @@ package com.github.janbols.funfish.unlimited
 import com.github.janbols.funfish.Box
 import com.github.janbols.funfish.Boxes
 
-enum class Hue { Blackish, Greyish, Whiteish, Hollow }
+enum class Hue { Blackish, Greyish, Whiteish, Hollow, Redish, Brownish, Beige }
 
 data class Lens(val box: Box, val hue: Hue)
 
-object Lenses{
+object Lenses {
 
     private fun lift(f: (Box) -> Box, l: Lens): Lens = l.copy(f(l.box))
 
@@ -33,6 +33,11 @@ object Lenses{
         Hue.Blackish -> Hue.Greyish
         Hue.Greyish -> Hue.Whiteish
         Hue.Whiteish -> Hue.Blackish
+
+        Hue.Redish -> Hue.Brownish
+        Hue.Brownish -> Hue.Beige
+        Hue.Beige -> Hue.Redish
+
         Hue.Hollow -> Hue.Hollow
     })
 }

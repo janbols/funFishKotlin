@@ -51,15 +51,17 @@ private val pages: Map<Int, (Renderer) -> Unit> = listOf(
         )),
         draw(::expandedBox, createPicture(hendersonFishShapes)),
         draw(::expandedBox, Limited.ttile(createPicture(hendersonFishShapes))),
-        draw(1200, 800, ::bandBox, Limited.egg(3, 16, createPicture(hendersonFishShapes))),
+        draw(::bandBox, Limited.egg(3, 16, createPicture(hendersonFishShapes)), 1200, 800),
         draw(::fittedBox, Limited.squareLimit(3, createPicture(hendersonFishShapes))),
         draw(::expandedBox, Hue.Blackish, createLensPicture(fishShapes)),
         draw(::expandedBox, Hue.Greyish, createLensPicture(fishShapes)),
         draw(::expandedBox, Hue.Whiteish, createLensPicture(fishShapes)),
         draw(::expandedBox, Hue.Greyish, createLensPicture(lizardShapes)),
         draw(::fittedBox, Hue.Blackish, Unlimited.quartet2(3, createLensPicture(lizardShapes))),
-        draw(1200, 800, ::bandBox, Hue.Hollow, Unlimited.egg(3, 16, createLensPicture(fishShapes))),
-        draw(::fittedBox, Hue.Greyish, Unlimited.squareLimit(3, createLensPicture(fishShapes)))
+        draw(::fittedBox, Hue.Brownish, Unlimited.quartet2(3, createLensPicture(lizardShapes))),
+        draw(::bandBox, Hue.Hollow, Unlimited.egg(3, 16, createLensPicture(fishShapes)), 1200, 800),
+        draw(::fittedBox, Hue.Greyish, Unlimited.squareLimit(3, createLensPicture(fishShapes))),
+        draw(::fittedBox, Hue.Brownish, Unlimited.squareLimit(3, createLensPicture(fishShapes)))
 ).withIndex().associate { Pair(it.index, it.value) }
 
 
@@ -76,27 +78,18 @@ private fun expandedBox(width: Int, height: Int): Box = Box(
 )
 
 private fun bandBox(width: Int, height: Int): Box = Box(
-        Vector(100.0, 100.0),
+        Vector(width / 8.0, height / 8.0),
         Vector(3200.0, 0.0),
         Vector(0.0, 600.0)
 )
 
-private fun draw(width: Int, height: Int, boxFactory: (Int, Int) -> Box, picture: Picture): (Renderer) -> Unit = { renderer ->
+private fun draw(boxFactory: (Int, Int) -> Box, picture: Picture, width: Int = defaultWidth, height: Int = defaultHeight): (Renderer) -> Unit = { renderer ->
     renderer(width, height, boxFactory(width, height) pipe picture)
 }
 
-private fun draw(boxFactory: (Int, Int) -> Box, picture: Picture): (Renderer) -> Unit = { renderer ->
-    draw(defaultWidth, defaultHeight, boxFactory, picture)(renderer)
-}
-
-private fun draw(width: Int, height: Int, boxFactory: (Int, Int) -> Box, hue: Hue, lensPicture: LensPicture): (Renderer) -> Unit = { renderer ->
+private fun draw(boxFactory: (Int, Int) -> Box, hue: Hue, lensPicture: LensPicture, width: Int = defaultWidth, height: Int = defaultHeight): (Renderer) -> Unit = { renderer ->
     renderer(width, height, Lens(boxFactory(width, height), hue) pipe lensPicture)
 }
-
-private fun draw(boxFactory: (Int, Int) -> Box, hue: Hue, lensPicture: LensPicture): (Renderer) -> Unit = { renderer ->
-    draw(defaultWidth, defaultHeight, boxFactory, hue, lensPicture)(renderer)
-}
-
 
 fun main(args: Array<String>) {
 
@@ -117,7 +110,7 @@ fun main(args: Array<String>) {
 private fun getPage(search: String): Int {
     val baseIx = search.indexOf("page=")
     val offset = "page=".length
-    return if (baseIx <0) 0 else search.drop(baseIx + offset).takeWhile { it in '0'..'9'}.toInt()
+    return if (baseIx < 0) 0 else search.drop(baseIx + offset).takeWhile { it in '0'..'9' }.toInt()
 }
 
 private fun setPage(div: HTMLDivElement, pageNr: Int) {

@@ -64,13 +64,6 @@ fun mapShape(m: (Vector) -> Vector): (Shape) -> Shape = {
 fun getStrokeWidth(box: Box): Double = min(box.b.size(), box.c.size()) / 80
 
 
-fun mapBezier(m: (Vector) -> Vector): (Bezier) -> Bezier = {
-    Bezier(m(it.controlPoint1), m(it.controlPoint2), m(it.endPoint))
-}
-
-
-
-
 fun getStyle(box: Box): Style {
     val sw = getStrokeWidth(box)
     return Style(StrokeStyle(sw, StyleColor.Black), null)

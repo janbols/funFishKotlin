@@ -12,7 +12,9 @@ fun getColor(styleColor: StyleColor): String = when (styleColor) {
     Black -> "black"
     Grey -> "grey"
     White -> "white"
-    Red -> "red"
+    Red -> "orangeRed"
+    Brown -> "tan"
+    Beige -> "beige"
     Green -> "green"
     Yellow -> "yellow"
 }
