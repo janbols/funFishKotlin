@@ -218,7 +218,6 @@ object Fishier {
             )
     )
 
-    private val fishyLines = fishySpineCurves.map { Pair("secondary", it) }
 
     val fishShapes = listOf(
             Pair("primary", fishyPath),
@@ -226,6 +225,6 @@ object Fishier {
             Pair("eye-outer", rightEyePath),
             Pair("eye-inner", innerLeftEyePath),
             Pair("eye-inner", innerRightEyePath)
-    ) + fishyLines
+    ) + fishySpineCurves.map { Pair("secondary", it) }
 
 }

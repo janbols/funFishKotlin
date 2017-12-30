@@ -56,11 +56,7 @@ fun mapShape(m: (Vector) -> Vector): (Shape) -> Shape = {
             Path(m(it.start), it.beziers.map(bezierMapper))
         }
         is Line -> Line(m(it.lineStart), m(it.lineEnd))
-        is Circle -> {
-            val cNew = m(it.center)
-            val rNew = m(it.radius) - cNew
-            Circle(cNew, rNew)
-        }
+        is Circle -> Circle(m(it.center), m(it.center + it.radius) - m(it.center))
     }
 }
 

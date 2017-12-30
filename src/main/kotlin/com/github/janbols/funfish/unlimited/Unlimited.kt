@@ -46,8 +46,8 @@ object Unlimited {
         val fishS = fishW pipe ::turn
         val fishE = fishS pipe ::turn
         return over(
-                over(fishN pipe hueN , fishW pipe hueW),
-                over(fishE pipe hueE , fishS pipe hueS)
+                over(fishN pipe hueN, fishW pipe hueW),
+                over(fishE pipe hueE, fishS pipe hueS)
         )
     }
 
@@ -57,6 +57,20 @@ object Unlimited {
     fun utile3(f: LensPicture): LensPicture = utile({ rehue(it) pipe ::rehue }, { it }, { rehue(it) }, { it }, f)
 
     fun quartet(p: LensPicture, q: LensPicture, r: LensPicture, s: LensPicture): LensPicture = above(beside(p, q), beside(r, s))
+
+    fun quartet2(depth: Int, p: LensPicture): LensPicture {
+        fun qquartet(n: Int, p: LensPicture): LensPicture {
+            val p2 = if (n == 1) p else qquartet(n - 1, p)
+            return quartet(p2, p2, p2, p2)
+        }
+
+        val pNW = p
+        val pNE = p pipe ::rehue pipe ::turn
+        val pSW = p pipe ::rehue pipe ::turn pipe ::turn pipe ::turn
+        val pSE = p pipe ::turn pipe ::turn
+        val q = quartet(pNW, pNE, pSW, pSE)
+        return qquartet(depth, q)
+    }
 
     val blank: LensPicture = { _ -> listOf() }
 
