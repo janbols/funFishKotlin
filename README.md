@@ -1,9 +1,13 @@
 # funFishKotlin
-Implementation of Henderson's Escher fish in Kotlin ported from [https://github.com/einarwh/funfish](https://github.com/einarwh/funfish)'s implementation in F#.  
+Implementation of Henderson's Escher fish in Kotlin ported from https://github.com/einarwh/funfish 's F# implementation.  
 See https://eprints.soton.ac.uk/257577/1/funcgeo2.pdf for Peter Henderson's paper.
 
 ## Getting started
-Build using `gradlew build`.  
-Open [./web/index.html](./web/index.html).
+Check the results on https://janbols.github.io/funFishKotlin/web/  
 
-See https://www.wikiart.org/en/m-c-escher/square-limit-colour for the expected end result
+or  
+
+1. Build using `gradlew build`.  
+2. Open ./web/index.html in your favourite browser 
+
+Also see https://www.wikiart.org/en/m-c-escher/square-limit-colour for the expected end result as drawn by Escher.
